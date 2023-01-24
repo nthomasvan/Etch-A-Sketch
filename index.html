@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Etch-A-Sketch</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="title">Etch-A-Sketch</h1>
+    </header>
+    <main class="main">
+        <div class="controls">
+            <input id="colorSelect" type="color" value="#ffffff"/>
+            <button id="colorBtn">Color Mode</button>
+            <button id="rainbowBtn">Rainbow Mode</button>
+            <button id="eraserBtn">Eraser</button>
+            <button id="clearBtn">Clear</button>
+            <div id="gridSize" class="grid-size">16 x 16</div>
+            <input id="gridSlider" type="range" value="16" min="1" max="64"/>
+        </div>
+        <div class="grid-container">
+            <div class="grid" id="grid"></div>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>
+            Copyright ©  
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        nthomasvan
+        </p>
+        <a id="github" target="_blank" href="https://github.com/nthomasvan"><img src="images/github-mark.png"  style="width:40px;height:40px"/></a>
+        </a>
+      </footer>
+    <script src="script.js"></script>
+</body>
+</html>
