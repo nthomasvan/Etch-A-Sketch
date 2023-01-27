@@ -1,8 +1,15 @@
 const grid = document.getElementById('grid');
 const slider = document.getElementById('gridSlider');
 const gridSize = document.getElementById('grid-size');
-let isClicked = false;
+const clearGrid = document.getElementById('clearBtn');
+const eraserMode = document.getElementById('eraser');
+const colorSelect = document.getElementById('colorSelect');
+const colorMode = document.getElementById('color');
+const rainbowMode = document.getElementById('rainbow');
+
+let colorSetting = 'black';
 let mouseDown = false;
+let currentMode = 'color';
 
 document.body.addEventListener('mousedown', function(){
     mouseDown = true;
@@ -28,25 +35,51 @@ function gridItem(){
     grid.appendChild(gridItem);
 }
 
+function randomColor(){
+    let maxVal = 0xFFFFFF; // 16777215
+    let randomNumber = Math.random() * maxVal; 
+    randomNumber = Math.floor(randomNumber);
+    randomNumber = randomNumber.toString(16);
+    let randColor = randomNumber.padStart(6, 0);   
+    return `#${randColor.toUpperCase()}`
+}
+
 function colorChange(e)
 {
-    console.log(mouseDown);
+    console.log(currentMode);
     if(e.type === 'mouseover' && !mouseDown) return
 
-    e.target.style.backgroundColor = 'black';
+    if(currentMode == 'rainbow'){
+        e.target.style.backgroundColor = randomColor();
+    }
+    else if(currentMode === 'color' || currentMode == 'colorSelect'){
+        colorSetting = colorSelect.value;
+        e.target.style.backgroundColor = colorSetting;
+    }
+    else if (currentMode == 'eraser'){
+        e.target.style.backgroundColor = 'white';
+    }
 } 
 
-function clearGrid(){
+function emptyGrid(){
     grid.innerHTML = '';
 }
 gridSetup(16);
 
 
-slider.addEventListener('input', updateValue)
+slider.addEventListener('input', updateSize);
+clearGrid.addEventListener('click',updateSize);
+eraserMode.addEventListener('click', updateMode);
+colorSelect.addEventListener('input',updateMode);
+colorMode.addEventListener('click', updateMode);
+rainbowMode.addEventListener('click', updateMode)
 
-function updateValue(){
+function updateSize(){
     gridSize.innerHTML = `${slider.value} x ${slider.value}`;
-    clearGrid();
+    emptyGrid();
     gridSetup(slider.value);
 }
-//console.log(slider.value);
+
+function updateMode(e){
+    currentMode = e.target.id;
+}
