@@ -10,6 +10,31 @@ body{
     gap: 10px;
 }
 
+button{
+  padding: 10px 30px;
+}
+
+button,input{
+  width: 100%;
+  border: 2px solid;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+button:hover{
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+button.active{
+  color:green;
+}
+
+#grid-size{
+  font-size: large;
+  font-weight: bold;
+}
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -21,6 +46,13 @@ body{
     width: 100%;
     padding: 10px;
     font-size: 20px;
+  }
+
+  header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
   }
   
   #github:hover{
@@ -40,12 +72,16 @@ body{
     border: 1px solid grey;
   }
 
+  #colorSelect{
+    height: 80px;
+    padding: 5px;
+  }
 
   .main {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 100px;
-    max-width: 1100px;
+    gap: 80px;
+    max-width: 1000px;
     margin: 0 auto;
   }

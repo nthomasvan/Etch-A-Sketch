@@ -64,6 +64,7 @@ function colorChange(e)
 function emptyGrid(){
     grid.innerHTML = '';
 }
+
 gridSetup(16);
 
 
@@ -82,4 +83,18 @@ function updateSize(){
 
 function updateMode(e){
     currentMode = e.target.id;
+
+    rainbowMode.classList.remove('active');
+    colorMode.classList.remove('active');
+    eraserMode.classList.remove('active');
+
+    if(currentMode == 'rainbow'){
+        rainbowMode.classList.add('active');
+    }
+    else if(currentMode === 'color' || currentMode == 'colorSelect'){
+        colorMode.classList.add('active');
+    }
+    else if (currentMode == 'eraser'){
+        eraserMode.classList.add('active');
+    }
 }
